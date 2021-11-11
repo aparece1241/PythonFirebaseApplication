@@ -9,7 +9,7 @@ class FireStoreStorage:
         self.storage_instance = firestore.client(self.app)
 
     def get_all(self, collection_name):
-        collection = self.storage_instance.collection('u{collection}'.format(collection_name)).get()
+        collection = self.storage_instance.collection(u'{}'.format(collection_name)).get()
         return collection
 
 
