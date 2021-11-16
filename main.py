@@ -1,16 +1,15 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
+from service.firebase_connection import FirebaseConnection
+from service.normal_storage.firestore_connect import FireStoreStorage 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    firebase_connection = FirebaseConnection('https://fir-withpython-9d955-default-rtdb.firebaseio.com/',
+                       './authkey/google_firebase_key.json')
+    fire_app = firebase_connection.connect()
+    normal_storage = FireStoreStorage(fire_app)
+    users = normal_storage.get_all('users')
+    for user in users:
+        print('{firstname} {lastname}'.format(firstname = user.get('first'), lastname = user.get('last')))
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
