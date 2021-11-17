@@ -25,8 +25,13 @@ class FirebaseConnection:
         return self.App
 
 
+def return_instance_con():
+    instance_con = FirebaseConnection('https://fir-withpython-9d955-default-rtdb.firebaseio.com/',
+                   './authkey/google_firebase_key.json')
+    return instance_con
+
+
 # Check if its imported or run directly
 # Initialized default value
 if __name__ == '__main__':
-    FirebaseConnection('https://fir-withpython-9d955-default-rtdb.firebaseio.com/',
-                       './authkey/google_firebase_key.json')
+    return_instance_con()
